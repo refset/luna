@@ -24,4 +24,8 @@
     (>evt [:luna/remove-input-error form-id input-id error])
     (>evt [:luna/add-input-error form-id input-id error])))
 
+(defmethod validate
+  nil
+  [])
+
 ;; ------------ Dispatch one or multiple validations ------------ ;;

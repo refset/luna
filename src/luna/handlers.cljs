@@ -74,6 +74,7 @@
  (luna :dummy)
  (fn [db [_ form-id]]
    (reagent.ratom/reaction (dummy @db form-id))))
+
 (defn- filter-nodes
   [f node]
   (into {} (filter (comp f val) node)))

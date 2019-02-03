@@ -172,3 +172,28 @@
      [:button.delete
       {:on-click #(>evt [:luna/hide-notification form-id])}]
      text]))
+
+(defn- filter-nodes
+  [f node]
+  (into {} (filter (comp f val) node)))
+
+(defn collect-form-inputs-recursion
+  [node]
+  (cond
+    (contains? node :value)
+    (:value node)
+
+    :else
+    (filter-nodes
+     #(and (some? %)
+           (if  (seqable? %)
+             (not (empty? %))
+             true))
+     (zipmap
+      (keys node)
+      (map collect-form-inputs-recursion
+           (when (not (set? node)) (vals node)))))))
+
+(defn collect-form-inputs
+  [form-inputs form-id]
+  (collect-form-inputs-recursion form-inputs))
