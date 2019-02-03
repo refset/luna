@@ -1,23 +1,9 @@
 {:paths ["src"]
  :deps
- {org.clojure/clojure {:mvn/version "1.9.0"}
-  juxt.edge/lib.app {:local/root "../lib.app"}
-
-  selmer {:mvn/version "1.12.5"}
-  reagent/reagent {:mvn/version "0.7.0"}
+ {reagent/reagent {:mvn/version "0.7.0"}
   re-frame/re-frame {:mvn/version "0.10.6"}
   day8.re-frame/http-fx {:mvn/version "0.1.6"}
-  venantius/accountant {:mvn/version "0.2.4"}
-  medley {:mvn/version "1.0.0"}
-
-  yada {:mvn/version "1.2.15"}
-  juxt.edge/yada.ig {:local/root "../lib.ig.yada"}
-  juxt.edge/bidi.ig {:local/root "../lib.ig.bidi"}
-
-  integrant {:mvn/version "0.7.0"}
-
-  org.clojure/tools.logging {:mvn/version "0.5.0-alpha"}}
-
+  medley {:mvn/version "1.0.0"}}
  :aliases
  {:dev
   {:extra-paths ["dev"]}}}
