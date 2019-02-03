@@ -78,7 +78,7 @@
   [{:keys [form-id input-id label type placeholder on-click-button] :as attrs}]
   [:div.field.has-addons
    [:div.control
-    [input-core type form-id input-id placeholder attrs]]
+    [input-core type form-id input-id placeholder "" attrs]]
    [:div.control
     [:a.button.is-info
      {:on-click #(on-click-button)}
