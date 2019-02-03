@@ -1,9 +1,7 @@
-(ns luna.luna.frontend.luna.handlers
+(ns luna.handlers
   (:require [re-frame.core :as rf]
-            [clojure.set :as cl]
             [reagent.core :as reagent]
-            [medley.core :as medley]
-            [cljs.pprint :refer [pprint]]))
+            [medley.core :as medley]))
 
 (def <sub (comp deref rf/subscribe))
 (def >evt rf/dispatch)

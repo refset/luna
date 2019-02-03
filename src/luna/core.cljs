@@ -1,8 +1,8 @@
-(ns luna.luna.frontend.luna.core
+(ns luna.core
   (:require
    [re-frame.core :refer [subscribe dispatch]]
-   [luna.luna.frontend.luna.handlers :refer [<sub >evt]]
-   [luna.luna.frontend.luna.validation :as validation]))
+   [luna.handlers :refer [<sub >evt]]
+   [luna.validation :as validation]))
 
 (defn input-core
   [type form-id input-id placeholder classes &

@@ -1,7 +1,7 @@
-(ns luna.luna.frontend.luna.validation
+(ns luna.validation
   (:require
    [re-frame.core :as rf]
-   [luna.luna.frontend.luna.handlers :refer [<sub >evt]]))
+   [luna.handlers :refer [<sub >evt]]))
 
 ;; ------------ Dispatch one or multiple validations ------------ ;;
 
