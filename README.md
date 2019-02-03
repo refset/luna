@@ -17,7 +17,7 @@ Author: *Lucio D'Alessandro*
     {:extra-deps {
         luciodale/luna
             {:git/url "https://github.com/luciodale/luna"
-             :sha "2d59d5d30ada68aa2afb009fbd87d660f97e09f7"}
+             :sha "a643dc9233df37a0f14bd09c99ffac3f813d84ec"}
              ...
         }
      }
