@@ -104,7 +104,6 @@
   (let [{:keys [first-dispatched? button-classes submitting? errors disabled]}
         (<sub [:luna/utils-submit form-id])
         options-no-class (dissoc options :class)]
-    (print disabled)
     [:div.field
      [:div.control
       [:button.button
