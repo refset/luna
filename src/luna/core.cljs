@@ -1,6 +1,7 @@
 (ns luna.core
   (:require
    [re-frame.core :refer [subscribe dispatch]]
+   [luna.utils :as utils]
    [luna.handlers :refer [<sub >evt]]
    [luna.validation :as validation]))
 
@@ -198,3 +199,9 @@
   [db form-id]
   (let [form-inputs (get-in db (path->inputs form-id))]
     (collect-form-inputs-recursion form-inputs)))
+
+;; retrieve form input values from state
+
+(defn collect-form-inputs
+  [db form-id]
+  (utils/collect-form-inputs db form-id))
