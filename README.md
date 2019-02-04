@@ -19,7 +19,7 @@ Author: *Lucio D'Alessandro*
     {:extra-deps {
         luciodale/luna
             {:git/url "https://github.com/luciodale/luna"
-             :sha "a643dc9233df37a0f14bd09c99ffac3f813d84ec"}
+             :sha "76956a0b81563bd210e3ca14fc077cc59737a58b"}
              ...
         }
      }
@@ -198,13 +198,12 @@ Two re-frame examples will be provided to show how the form values can be retrie
  :submit-dummy-handler
  (fn [{:keys [db]} [_ form-id]]
    (luna/collect-form-inputs
-        (get-in db [:luna/forms form-id :login/inputs]) 
+         db
          form-id))))
 ```
 
 #### Arguments
-1. The first argument is a map that holds all the inputs for a specific form. 
-The path will always be `[:luna/forms :your-form-id :your-form-id/inputs]`.
+1. The first argument is simply the state. 
 2. The second argument is the form-id
 3. This function will return the input values in the following flat structure: 
 `{:name "Luna" :email "luna@luna.luna" ...}`
@@ -223,3 +222,5 @@ The path will always be `[:luna/forms :your-form-id :your-form-id/inputs]`.
 1. The first subscription returns the input values in a non-polished format.
 2. The variable called `inputs` holds the non-polished values, which are later passed to
 `collect-form-inputs-recursion` to extract only the meaningful bits.
+
+### More on other re-frame handlers soon!
