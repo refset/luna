@@ -27,6 +27,12 @@
   [form-id]
   (flatten->path
    (luna :forms)
+   form-id))
+
+(defn- path->inputs
+  [form-id]
+  (flatten->path
+   (luna :forms)
    form-id
    (to->ns form-id :inputs)))
 
@@ -68,7 +74,7 @@
 ;; from reg-event-db call -> (get-input-error..)
 (defn- dummy
   [db form-id]
-  (get-in db (path->form-id form-id)))
+  (get-in db (path->inputs form-id)))
 
 (rf/reg-sub
  (luna :dummy)
@@ -97,8 +103,9 @@
            (when (not (set? node)) (vals node)))))))
 
 (defn collect-form-inputs
-  [form-inputs form-id]
-  (collect-form-inputs-recursion form-inputs))
+  [db form-id]
+  (let [form-inputs (get-in db (path->inputs form-id))]
+    (collect-form-inputs-recursion form-inputs)))
 
 ;; ------------ S U B S C R I P T I O N S ------------ ;;
 
@@ -110,7 +117,7 @@
 (rf/reg-sub
  (luna :unprocessed-inputs)
  (fn [db [_ form-id]]
-   (get-in db (path->form-id form-id))))
+   (get-in db (path->inputs form-id))))
 
 (rf/reg-sub
  (luna :input-value)
@@ -168,7 +175,7 @@
  (luna :do-something-with-form)
  (fn [{:keys [db]} [_ form-id]]
    (pprint (collect-form-inputs
-            (get-in db (path->form-id form-id))
+            db
             form-id))))
 
 ;; get form values from subscription
@@ -181,6 +188,11 @@
    (collect-form-inputs-recursion inputs)))
 
 ;; ------------ E V E N T S ------------ ;;
+
+(rf/reg-event-db
+ (luna :clear-form)
+ (fn [db [_ form-id]]
+   (medley/dissoc-in db (path->form-id form-id))))
 
 (rf/reg-event-db
  (luna :set-input-value)

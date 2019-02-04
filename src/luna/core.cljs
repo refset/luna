@@ -195,5 +195,6 @@
            (when (not (set? node)) (vals node)))))))
 
 (defn collect-form-inputs
-  [form-inputs form-id]
-  (collect-form-inputs-recursion form-inputs))
+  [db form-id]
+  (let [form-inputs (get-in db (path->inputs form-id))]
+    (collect-form-inputs-recursion form-inputs)))
