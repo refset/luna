@@ -58,8 +58,11 @@
      (validation/validate validation form-id input-id)]))
 
 (defn input->pretty
-  [{:keys [form-id icons]}]
-  (>evt [:luna/store-icons form-id icons])
+  [{:keys [form-id input-id icons]}]
+  (when (:icon-right? icons)
+    (let [right-icons (-> icons
+                          (dissoc :icon-left :icon-right?))]
+      (>evt [:luna/store-icons form-id input-id right-icons])))
   (fn [{:keys [form-id input-id label type validation placeholder icons] :as attrs}]
     (let [classes (<sub [:luna/classes-input form-id input-id])]
       [:div.field

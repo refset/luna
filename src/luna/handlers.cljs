@@ -157,8 +157,8 @@
 
 (rf/reg-event-db
  (utils/luna :store-icons)
- (fn [db [_ form-id icons]]
-   (assoc-in db (utils/path->utils form-id :icons) icons)))
+ (fn [db [_ form-id input-id icons]]
+   (assoc-in db (utils/path->utils form-id [input-id :icons]) icons)))
 
 (rf/reg-sub
  (utils/luna :icons)
