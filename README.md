@@ -169,7 +169,7 @@ These inputs do not require much explanation, as they are easy to understand fro
       :label "Submit"
       :on-submit #(do
                     (rf/dispatch [:luna/show-notification :login])
-                    (print "Your custom handler")
+                    (print "Your custom handler"))
       :options {...}}]
 ```
 
